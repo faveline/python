@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def give_bmi(height: list[int | float], weight: list[int | float]) \
   -> list[int | float]:
     """return a list of bmi"""
@@ -12,10 +15,7 @@ def give_bmi(height: list[int | float], weight: list[int | float]) \
     except AssertionError as msg:
         print("AssertionError:", msg)
         return
-    bmi = [None] * len(height)
-    for i in range(len(height)):
-        bmi[i] = weight[i] / (height[i] * height[i])
-    return (bmi)
+    return (list(np.divide(weight, np.multiply(height, height))))
 
 
 def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
@@ -30,10 +30,4 @@ def apply_limit(bmi: list[int | float], limit: int) -> list[bool]:
     except AssertionError as msg:
         print("AssertionError:", msg)
         return
-    score = [None] * len(bmi)
-    for i in range(len(bmi)):
-        if (bmi[i] <= limit):
-            score[i] = False
-        else:
-            score[i] = True
-    return score
+    return list(np.array(bmi) > limit)
