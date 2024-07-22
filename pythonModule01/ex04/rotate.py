@@ -1,4 +1,4 @@
-from load_image import ft_load, ft_zoom
+from load_image import ft_load, ft_zoom, ft_rotate
 from matplotlib import pyplot as plt
 
 
@@ -10,16 +10,18 @@ def main():
     cory = 450
     try:
         image = ft_load("../animal.jpeg")
-        print(image)
         zoom = ft_zoom(image, x, y, chnl, corx, cory)
         print(zoom)
-    except Exception:
+        rotate = ft_rotate(zoom)
+        print(rotate)
+    except Exception as msg:
+        print("Exception error:", msg)
         return
     if (chnl == 1):
-        plt.imshow(zoom, cmap='gray', vmin=0, vmax=255)
+        plt.imshow(rotate, cmap='gray', vmin=0, vmax=255)
         plt.show()
     elif (chnl == 3):
-        plt.imshow(zoom)
+        plt.imshow(rotate)
         plt.show()
 
 

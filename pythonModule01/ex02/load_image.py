@@ -4,6 +4,7 @@ import os
 
 
 def ft_load(path: str) -> np.array:
+    """load an image as np.array"""
     try:
         assert path, "path can't be null"
         assert os.path.exists(path), "path doesn't exist"

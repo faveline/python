@@ -44,3 +44,20 @@ def ft_zoom(image: np.array, zx: int, zy: int, nbrChnl: int,
     zoom = image[corX:(zx + corX), corY:(zy + corY), 0:nbrChnl]
     print("New shape after slicing:", zoom.shape, "or", zoom.shape[0:2])
     return (zoom)
+
+
+def ft_rotate(zoom: np.array) -> np.array:
+    """rotate an image"""
+    try:
+        assert zoom.any, "image can't be null"
+        assert all(i > 0 for i in zoom.shape), \
+            "all image shapes should be strictly positive"
+    except AssertionError as msg:
+        print("AssertionError:", msg)
+        raise Exception("")
+    rotate = np.array([zoom[0].reshape(-1)] * len(zoom))
+    for i in range(len(zoom)):
+        for j in range(len(zoom[0])):
+            rotate[i][j] = np.array([zoom[j][i].reshape(-1)])
+    print("New shape after transpose:", rotate.shape)
+    return rotate

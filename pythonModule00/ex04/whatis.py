@@ -7,8 +7,10 @@ def main():
         return
     try:
         assert size < 3, "AssertionError: more than one argument is provided"
-        assert sys.argv[1].isdigit(), "AssertionError: argument is not an integer"
-    except AssertionError as msg: 
+        assert sys.argv[1].isdigit() or \
+            (sys.argv[1] and sys.argv[1][0] == '-' and sys.argv[1][1:].isdigit()), \
+            "AssertionError: argument is not an integer"
+    except AssertionError as msg:
         print(msg)
         return
     nbr = int(sys.argv[1])

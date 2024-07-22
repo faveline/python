@@ -22,7 +22,8 @@ def main():
     # [print(NESTED_MORSE[code.upper()], end=" ") for code in sys.argv[1]]
     for i in range(len(sys.argv[1]) - 1):
         print(NESTED_MORSE[sys.argv[1][i].upper()], end=" ")
-    print(NESTED_MORSE[sys.argv[1][len(sys.argv[1]) - 1].upper()])
+    if (len(sys.argv[1]) > 0):
+        print(NESTED_MORSE[sys.argv[1][len(sys.argv[1]) - 1].upper()])
 
 
 if __name__ == "__main__":
