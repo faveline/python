@@ -5,6 +5,7 @@ import sys
 
 
 def ft_yaxis(x: int):
+    """return population on 'G,M,k' format"""
     if (x / 1000000000 >= 1):
         x = x / 1000000000
         return ("{:.2f}G".format(x))
